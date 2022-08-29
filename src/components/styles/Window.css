@@ -1,0 +1,47 @@
+.window {
+    background-color: var(--color-4);
+    height: auto;
+    border-radius: var(--border-radius);
+    color: white;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.window-title {
+    display: flex;
+    align-items: center;
+    padding: 14px 24px;
+    height: 40px;
+}
+.window-title h5 {
+    font-size: 20px;
+    margin-left: 15px;
+}
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.title-dot-1,
+.title-dot-2,
+.title-dot-3 {
+    width: 14px;
+    height: 14px;
+    min-width: 14px;
+    min-height: 14px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.title-dot-1 {
+    background-color: var(--color-1);
+}
+.title-dot-2 {
+    background-color: var(--color-2);
+}
+.title-dot-3 {
+    background-color: var(--color-3);
+}
+.window-content {
+    /* display: flex; */
+}

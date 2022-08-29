@@ -1,10 +1,20 @@
-import { Life } from './components';
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <section className="container">
-      <Life/>
-    </section>
+    <div className="container">
+      <h1
+        style={{
+          textAlign: "center",
+          color: "white",
+          fontSize: "3rem",
+          padding: "1rem",
+        }}
+      >
+        Welcome to 🦠 Life
+      </h1>
+      <Home/>
+    </div>
   );
 }
 
