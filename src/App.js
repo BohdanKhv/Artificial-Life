@@ -6,12 +6,12 @@ function App() {
       <h1
         style={{
           textAlign: "center",
-          color: "white",
+          color: '#ffffff',
           fontSize: "3rem",
           padding: "1rem",
         }}
       >
-        Welcome to 🦠 Life
+        Welcome to 🦠
       </h1>
       <Home/>
     </div>

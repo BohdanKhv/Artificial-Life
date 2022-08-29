@@ -5,7 +5,7 @@ const Home = () => {
     const [life1Count, setLife1Count] = useState(300);
     const [life2Count, setLife2Count] = useState(300);
     const [life3Count, setLife3Count] = useState(300);
-    const [life4Count, setLife4Count] = useState(50);
+    const [life4Count, setLife4Count] = useState(300);
     // Relationships
     const [l1tol1, setL1tol1] = useState(-1);
     const [l1tol2, setL1tol2] = useState(1);

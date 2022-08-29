@@ -59,7 +59,7 @@ const Controller = ({
                     </label>
                     <input
                         type="range"
-                        min="0"
+                        min="1"
                         max="3000"
                         value={life1Count}
                         onChange={(e) => onChange(e, setLife1Count)}
@@ -71,7 +71,7 @@ const Controller = ({
                     </label>
                     <input
                         type="range"
-                        min="0"
+                        min="1"
                         max="3000"
                         value={life2Count}
                         onChange={(e) => onChange(e, setLife2Count)}
@@ -83,7 +83,7 @@ const Controller = ({
                     </label>
                     <input
                         type="range"
-                        min="0"
+                        min="1"
                         max="3000"
                         value={life3Count}
                         onChange={(e) => onChange(e, setLife3Count)}
@@ -95,7 +95,7 @@ const Controller = ({
                     </label>
                     <input
                         type="range"
-                        min="0"
+                        min="1"
                         max="3000"
                         value={life4Count}
                         onChange={(e) => onChange(e, setLife4Count)}

@@ -26,7 +26,6 @@ const Life = ({
 }) => {
     const canvasParentRef = useRef(null);
     const [windowWidth, setWindowWidth] = useState(980);
-    const windowHeight = 500;
 
     useEffect(() => {
         if(canvasParentRef.current) {
@@ -42,11 +41,13 @@ const Life = ({
         // draw a rectangle
         const draw = (x, y, color, size) => {
             ctx.fillStyle = color;
-            // add border-radius to make it a circle
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, 2 * Math.PI);
+        }
+        const drawCanvas = (x, y, color, size) => {
+            ctx.fillStyle = color;
             ctx.fillRect(x, y, size, size);
-            // ctx.fill();
-            // ctx.beginPath();
-            // ctx.arc(x, y, 5, 0, 2 * Math.PI);
         }
 
         const particles = [];
@@ -68,20 +69,20 @@ const Life = ({
         }
 
         // Create N particles with given color
-        const create = (number, color) => {
+        const create = (number, color, size) => {
             const group = [];
             for (let i = 0; i < number; i++) {
-                group.push(particle(random(windowWidth), random(windowHeight), color, 5));
+                group.push(particle(random(windowWidth), random(500), color, size));
                 particles.push(group[i]);
             }
             return group;
         }
 
         // Yellow particles
-        const life1 = create(life1Count, '#ffffff');
-        const life2 = create(life2Count, '#e94040');
-        const life3 = create(life3Count, '#2cf769');
-        const life4 = create(life4Count, '#0066ff');
+        const life1 = create(life1Count, '#ffffff', 2);
+        const life2 = create(life2Count, '#e94040', 2);
+        const life3 = create(life3Count, '#2cf769', 2);
+        const life4 = create(life4Count, '#0066ff', 2);
 
         // Rule 1: Boids try to fly towards the centre of mass of neighbouring boids.
         const rule = (particles1, particles2, g) => {
@@ -105,7 +106,7 @@ const Life = ({
                     distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
 
                     if(distance > 0 && distance < 80) {
-                        F = g * 1/distance;
+                        F = g / Math.sqrt(distance);
                         forceX += F * distanceX;
                         forceY += F * distanceY;
                     }
@@ -118,10 +119,22 @@ const Life = ({
                 a.y += a.vy;
 
                 // Prevent particles from going out of canvas
-                if(a.x <= 0) a.x *= -1;
-                if(a.x >= windowWidth) a.x *= -1;
-                if(a.y <= 0) a.y *= -1;
-                if(a.y >= windowHeight) a.y *= -1;
+                if (a.x <= 0) {
+                    a.vx *= -1;
+                    a.x = 0;
+                }
+                if (a.x >= windowWidth - 5) {
+                    a.vx *= -1;
+                    a.x = windowWidth - 5;
+                }
+                if (a.y <= 0) {
+                    a.vy *= -1;
+                    a.y = 0;
+                }
+                if (a.y >= 495) {
+                    a.vy *= -1;
+                    a.y = 495;
+                }
             }
         }
 
@@ -144,9 +157,9 @@ const Life = ({
             rule(life4, life3, l4tol3);
             rule(life4, life4, l4tol4);
 
-            ctx.clearRect(0, 0, windowWidth, windowHeight);
+            ctx.clearRect(0, 0, windowWidth, 500);
             
-            draw(0, 0, '#000', windowWidth, windowHeight);
+            drawCanvas(0, 0, '#000', windowWidth, 500);
     
             for(let i = 0; i < particles.length; i++) {
                 draw(particles[i].x, particles[i].y, particles[i].color, particles[i].size, particles[i].size);
@@ -171,12 +184,13 @@ const Life = ({
             btnAction={initializeGame}
         >
             <div
+                className="flex bg-black"
                 ref={canvasParentRef}
             >
                 <canvas
                     id="life"
                     width={windowWidth}
-                    height={windowHeight}
+                    height={500}
                 />
             </div>
         </Window>

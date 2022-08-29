@@ -22,3 +22,12 @@
 .controller {
     min-width: 300px;
 }
+
+@media screen and (max-width: 1050px) {
+  .controllers {
+    grid-template-columns: 1fr 1fr;
+  }
+  .window {
+    max-width: unset!important;
+  }
+}
