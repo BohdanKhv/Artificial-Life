@@ -7,6 +7,10 @@ const Life = ({
     life2Count,
     life3Count,
     life4Count,
+    life1Color,
+    life2Color,
+    life3Color,
+    life4Color,
     l1tol1,
     l1tol2,
     l1tol3,
@@ -25,14 +29,17 @@ const Life = ({
     l4tol4,
 }) => {
     const canvasParentRef = useRef(null);
-    const [windowWidth, setWindowWidth] = useState(980);
+    const [windowWidth, setWindowWidth] = useState(0);
 
     useEffect(() => {
         if(canvasParentRef.current) {
             setWindowWidth(canvasParentRef.current.offsetWidth);
-            console.log(canvasParentRef.current.offsetWidth);
         }
     }, [canvasParentRef])
+
+    useEffect(() => {
+        if(windowWidth > 0) {initializeGame(); console.log('initialized')}
+    }, [windowWidth])
 
     const initializeGame = () => {
         // Get the canvas element
@@ -79,10 +86,10 @@ const Life = ({
         }
 
         // Yellow particles
-        const life1 = create(life1Count, '#ffffff', 2);
-        const life2 = create(life2Count, '#e94040', 2);
-        const life3 = create(life3Count, '#2cf769', 2);
-        const life4 = create(life4Count, '#0066ff', 2);
+        const life1 = create(life1Count, life1Color, 2);
+        const life2 = create(life2Count, life2Color, 2);
+        const life3 = create(life3Count, life3Color, 2);
+        const life4 = create(life4Count, life4Color, 2);
 
         // Rule 1: Boids try to fly towards the centre of mass of neighbouring boids.
         const rule = (particles1, particles2, g) => {
@@ -173,10 +180,6 @@ const Life = ({
 
         update();
     }
-
-    useEffect(() => {
-        initializeGame();
-    }, [])
 
     return (
         <Window title="Life"

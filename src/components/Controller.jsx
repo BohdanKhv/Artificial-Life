@@ -6,6 +6,10 @@ const Controller = ({
     life2Count,
     life3Count,
     life4Count,
+    life1Color,
+    life2Color,
+    life3Color,
+    life4Color,
     l1tol1,
     l1tol2,
     l1tol3,
@@ -26,6 +30,10 @@ const Controller = ({
     setLife2Count,
     setLife3Count,
     setLife4Count,
+    setLife1Color,
+    setLife2Color,
+    setLife3Color,
+    setLife4Color,
     setL1tol1,
     setL1tol2,
     setL1tol3,
@@ -51,6 +59,36 @@ const Controller = ({
     return (
         <div className="controller">
             <Window title="Controller" maxWidth={500}>
+                <div className="flex bg-black justify-between py-1 px-2">
+                    <div className="form-group">
+                        <input
+                            type="color"
+                            value={life1Color}
+                            onChange={(e) => onChange(e, setLife1Color)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="color"
+                            value={life2Color}
+                            onChange={(e) => onChange(e, setLife2Color)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="color"
+                            value={life3Color}
+                            onChange={(e) => onChange(e, setLife3Color)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            type="color"
+                            value={life4Color}
+                            onChange={(e) => onChange(e, setLife4Color)}
+                        />
+                    </div>
+                </div>
                 <div className="flex">
                 <div className="controllers">
                 <div className="form-group">

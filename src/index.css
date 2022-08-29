@@ -84,6 +84,29 @@ body {
 .flex {
   display: flex;
 }
+.justify-between {
+  justify-content: space-between;
+}
+.px-2 {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.py-1 {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.text-center {
+  text-align: center;
+}
+.justify-center {
+  justify-content: center;
+}
+
+input[type="color"] {
+  background-color: transparent;
+  border: none;
+  border-radius: 15px!important;
+}
 
 /* @keyframes gradient {
 	0% {

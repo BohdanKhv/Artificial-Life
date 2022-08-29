@@ -1,6 +1,6 @@
 .window {
     background-color: var(--color-4);
-    height: auto;
+    height: fit-content;
     border-radius: var(--border-radius);
     color: white;
     box-shadow: var(--box-shadow);
@@ -12,6 +12,7 @@
     align-items: center;
     padding: 14px 24px;
     height: 40px;
+    border-bottom: 1px solid #303030;
 }
 .window-title h5 {
     font-size: 20px;
